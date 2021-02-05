@@ -1,0 +1,20 @@
+{
+    "require": {
+        "phpoffice/phpspreadsheet": "^1.16",
+        "jonnyw/php-phantomjs": "4.*"
+    },
+    "autoload": {
+        "psr-4": { "App\\": "../screenshots/" }
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "PhantomInstaller\\Installer::installPhantomJS"
+        ],
+        "post-update-cmd": [
+            "PhantomInstaller\\Installer::installPhantomJS"
+        ]
+    },
+    "config": {
+        "bin-dir": "bin"
+    }
+}
