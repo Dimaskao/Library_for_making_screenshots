@@ -1,7 +1,7 @@
 <?php
-namespace App\src;
+namespace Dimaskao\Screenshoter;
 use JonnyW\PhantomJs\Client;
-use App\src\ExcelService;
+use Dimaskao\Screenshoter\ExcelService;
 
 final class Screenshoter
 {
@@ -17,7 +17,7 @@ final class Screenshoter
     {
         $excel = new ExcelService($excelPath);
         $urlList = $excel->getUrlList($urlColumn);
-        
+
         foreach ($urlList as $row => $url) {
             $client = Client::getInstance();
             $client->getEngine()->setPath('../bin/phantomjs'); //Set path to phantomjs. Default "../bin/phantomjs"

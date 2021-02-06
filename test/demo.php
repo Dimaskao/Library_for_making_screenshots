@@ -1,7 +1,7 @@
 <?php
 require  __DIR__ . '/../vendor/autoload.php';
 
-use App\src\Screenshoter;
+use Dimaskao\Screenshoter\Screenshoter;
 
 $screenshoter = new Screenshoter('../images');//path to screenshots storage
 

@@ -1,10 +1,20 @@
 {
+    "name": "dimaskao/library_for_making_screenshots",
+    "description": "With this library you can take url from Excel file and make page screenshot.",
+    "type": "library",
+    "authors": [{
+        "name": "Dmytro Lytvynchuk",
+        "email": "dmytrolutv@gmail.com"
+    }],
     "require": {
+        "php": ">=7.4",
         "phpoffice/phpspreadsheet": "^1.16",
         "jonnyw/php-phantomjs": "4.*"
     },
     "autoload": {
-        "psr-4": { "App\\": "../screenshots/" }
+        "psr-4": {
+            "Dimaskao\\Screenshoter\\": "src/"
+        }
     },
     "scripts": {
         "post-install-cmd": [

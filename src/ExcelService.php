@@ -1,5 +1,5 @@
 <?php
-namespace App\src;
+namespace Dimaskao\Screenshoter;
 
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
