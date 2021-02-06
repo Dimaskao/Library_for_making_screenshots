@@ -6,31 +6,32 @@ use App\src\ExcelService;
 final class Screenshoter
 {
 
-    private ExcelService $excel;
-    private array $urlList;
+    private string $saveDir;
 
-    public function __construct(string $filename, string $raw)
+    public function __construct(string $saveDir)
     {
-        $this->excel = new ExcelService($filename);
-        $this->urlList = $this->excel->getUrlList($raw);
+        $this->saveDir = $saveDir;
     }
 
-    public function getScreenshots(string $path): void
+    public function getScreenshots(string $excelPath, string $urlColumn, string $filnameColumn): void
     {
-        foreach ($this->urlList as $row => $url) {
+        $excel = new ExcelService($excelPath);
+        $urlList = $excel->getUrlList($urlColumn);
+        
+        foreach ($urlList as $row => $url) {
             $client = Client::getInstance();
-            //$client->getEngine()->setPath('../bin/phantomjs'); TODO: исправить проблему с подгрузкой файла
+            $client->getEngine()->setPath('../bin/phantomjs'); //Set path to phantomjs. Default "../bin/phantomjs"
             $request = $client->getMessageFactory()->createCaptureRequest($url[0], 'GET');
             $filename = $this->getRandomFilename();
-            $request->setOutputFile("$path/$filename.jpg");
+            $request->setOutputFile("$this->saveDir/$filename.jpg");
             $response = $client->getMessageFactory()->createResponse();
             $client->send($request, $response);
 
             if ($response->getStatus() == 0){
                 continue;
             }
-            $this->excel->writeExcelData('E' , ++$row, $filename . ".jpg");
-        
+
+            $excel->writeExcelData($filnameColumn, ++$row, $filename . ".jpg");
         }
     }
     
