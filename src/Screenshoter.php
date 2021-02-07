@@ -20,7 +20,7 @@ final class Screenshoter
 
         foreach ($urlList as $row => $url) {
             $client = Client::getInstance();
-            $client->getEngine()->setPath('../bin/phantomjs'); //Set path to phantomjs. Default "../bin/phantomjs"
+            //$client->getEngine()->setPath('../bin/phantomjs'); //Set path to phantomjs. Default "../bin/phantomjs"
             $request = $client->getMessageFactory()->createCaptureRequest($url[0], 'GET');
             $filename = $this->getRandomFilename();
             $request->setOutputFile("$this->saveDir/$filename.jpg");

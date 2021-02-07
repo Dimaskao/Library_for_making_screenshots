@@ -7,7 +7,7 @@ You can use composer to install this extension.
 
 Just run:
 ```
-$composer require dimaskao/library_for_serializing_objects
+$ composer require dimaskao/library_for_making_screenshots
 ```
 ## How to use
 At first include this library classes: 
